@@ -23,6 +23,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::prefix('chats')->namespace('Chat')->group(function () {
         Route::get('/', 'ListController');
+        Route::post('/', 'StoreController');
     });
 
 });

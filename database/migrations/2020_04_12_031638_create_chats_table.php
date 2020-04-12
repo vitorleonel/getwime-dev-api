@@ -17,7 +17,7 @@ class CreateChatsTable extends Migration
             $table->id();
             $table->string('public_id', 36)->index();
             $table->foreignId('user_id')->constrained();
-            $table->string('name', 50);
+            $table->string('name', 25);
             $table->text('description');
             $table->timestamps();
         });
