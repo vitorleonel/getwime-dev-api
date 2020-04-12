@@ -17,7 +17,6 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name', 50);
             $table->string('key_access', 36);
-            $table->timestamp('last_access_at')->nullable();
             $table->timestamps();
         });
     }
