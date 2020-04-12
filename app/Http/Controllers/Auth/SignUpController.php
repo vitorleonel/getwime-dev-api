@@ -46,7 +46,7 @@ class SignUpController extends Controller
             return response()->json([
                 'token' => $token,
                 'user' => $user
-            ]);
+            ], 201);
         } catch (\Exception $exception) {
             DB::rollBack();
 
