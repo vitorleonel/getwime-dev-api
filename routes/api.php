@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('auth')->namespace('Auth')->middleware('guest')->group(function() {
+    Route::post('signup', 'SignUpController')->name('auth.signup');
+    Route::post('signin', 'SignInController')->name('auth.signin');
 });
