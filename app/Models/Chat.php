@@ -12,14 +12,14 @@ class Chat extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description',
+        'user_id', 'name', 'description',
     ];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function user()
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(User::class, 'chats_users');
     }
 }
