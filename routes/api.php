@@ -24,4 +24,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::get('/', 'ListController')->name( 'chats.list');
         Route::post('/', 'StoreController')->name( 'chats.store');
     });
+
+    Route::prefix('chats/{id}/messages')->namespace('Message')->group(function () {
+        Route::get('/', 'ListController')->name( 'chats.messages.list');
+    });
 });
