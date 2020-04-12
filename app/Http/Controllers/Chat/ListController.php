@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Chat;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ChatResource;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class ListController extends Controller
         $chats = $user->chats()->get();
 
         return response()->json([
-            'chats' => $chats
+            'chats' => ChatResource::collection($chats)
         ]);
     }
 }
