@@ -18,3 +18,11 @@ Route::prefix('auth')->namespace('Auth')->middleware(['guest'])->group(function(
     Route::post('signup', 'SignUpController')->middleware(['throttle:5,1'])->name('auth.signup');
     Route::post('signin', 'SignInController')->name('auth.signin');
 });
+
+Route::middleware(['auth:sanctum'])->group(function () {
+
+    Route::prefix('chats')->namespace('Chat')->group(function () {
+        Route::get('/', 'ListController');
+    });
+
+});
