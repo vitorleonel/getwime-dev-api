@@ -20,8 +20,8 @@ class ListController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $userId = $request->user()->id;
-        $chats = Chat::where('user_id', $userId)->get();
+        $user = $request->user();
+        $chats = $user->chats()->get();
 
         return response()->json([
             'chats' => $chats
