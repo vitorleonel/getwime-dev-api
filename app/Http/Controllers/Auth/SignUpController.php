@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Auth\SignUpRequest;
+
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
@@ -15,7 +18,15 @@ use App\Models\User;
 class SignUpController extends Controller
 {
     /**
-     * @return \Illuminate\Http\JsonResponse
+     * SignUpController constructor.
+     * @param SignUpRequest $request
+     */
+    public function __construct(SignUpRequest $request)
+    {
+    }
+
+    /**
+     * @return JsonResponse
      */
     public function __invoke()
     {

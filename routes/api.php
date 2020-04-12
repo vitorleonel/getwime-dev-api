@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('auth')->namespace('Auth')->middleware('guest')->group(function() {
-    Route::post('signup', 'SignUpController')->name('auth.signup');
+Route::prefix('auth')->namespace('Auth')->middleware(['guest'])->group(function() {
+    Route::post('signup', 'SignUpController')->middleware(['throttle:5,1'])->name('auth.signup');
     Route::post('signin', 'SignInController')->name('auth.signin');
 });
