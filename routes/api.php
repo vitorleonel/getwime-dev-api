@@ -25,7 +25,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/', 'StoreController')->name( 'chats.store');
     });
 
-    Route::prefix('chats/{id}/messages')->namespace('Message')->group(function () {
-        Route::get('/', 'ListController')->name( 'chats.messages.list');
-    });
+    Route::prefix('chats/{id}/messages')
+        ->namespace('Message')
+        ->middleware('messages.can_manipulate')
+        ->group(function () {
+            Route::get('/', 'ListController')->name( 'chats.messages.list');
+            Route::post('/', 'StoreController')->name( 'chats.messages.store');
+        });
 });
