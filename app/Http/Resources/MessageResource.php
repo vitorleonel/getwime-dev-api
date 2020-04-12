@@ -17,6 +17,7 @@ class MessageResource extends JsonResource
         $isAuthor = $this->user_id === request()->user()->id;
 
         return [
+            'id' => $this->id,
             'description' => $this->description,
             'user' => $this->user->only(['name']),
             'author' => $isAuthor
