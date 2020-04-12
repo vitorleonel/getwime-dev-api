@@ -22,4 +22,12 @@ class Chat extends Model
     {
         return $this->belongsToMany(User::class, 'chats_users');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 }
