@@ -21,8 +21,11 @@ class ListController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $user = $request->user();
-        $chats = $user->chats()->get();
+        $userId = $request->user()->id;
+
+        $chats = Chat::withCount(['users'])->whereHas('users', function($query) use ($userId) {
+            return $query->where('user_id', $userId);
+        })->get();
 
         return response()->json([
             'chats' => ChatResource::collection($chats)

@@ -22,6 +22,6 @@ Route::prefix('auth')->namespace('Auth')->middleware(['guest'])->group(function(
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::prefix('chats')->namespace('Chat')->group(function () {
         Route::get('/', 'ListController')->name( 'chats.list');
-        Route::post('/', 'StoreController')->middleware(['throttle:5,1'])->name( 'chats.store');
+        Route::post('/', 'StoreController')->name( 'chats.store');
     });
 });
