@@ -32,4 +32,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function chats()
+    {
+        return $this->hasMany(Chat::class);
+    }
 }
